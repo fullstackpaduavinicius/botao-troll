@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caixa de Pergunta</title>
+    <style>
+        #caixaPergunta {
+            position: absolute;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="caixaPergunta">
+        <p>Quer casar comigo?</p>
+        <button id="botaoSim">Sim</button>
+        <button id="botaoNao">Não</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const caixaPergunta = document.getElementById('caixaPergunta');
+            const botaoSim = document.getElementById('botaoSim');
+            const botaoNao = document.getElementById('botaoNao');
+
+            function mostrarCaixaPergunta() {
+                caixaPergunta.style.display = 'flex';
+            }
+
+            function esconderCaixaPergunta() {
+                caixaPergunta.style.display = 'none';
+
+                // Mover a caixa para uma posição aleatória na tela
+                const novaPosicaoTop = Math.random() * (window.innerHeight - caixaPergunta.offsetHeight);
+                const novaPosicaoLeft = Math.random() * (window.innerWidth - caixaPergunta.offsetWidth);
+
+                caixaPergunta.style.top = novaPosicaoTop + 'px';
+                caixaPergunta.style.left = novaPosicaoLeft + 'px';
+
+                // Agora, mostramos a caixa de pergunta novamente após o movimento
+                mostrarCaixaPergunta();
+            }
+
+            function redirecionarParaVideo() {
+                // Redirecionar para o vídeo do YouTube
+                window.location.href = 'https://www.youtube.com/watch?v=5aFP-iR7hPg';
+            }
+
+            botaoSim.addEventListener('click', redirecionarParaVideo);
+            botaoNao.addEventListener('click', esconderCaixaPergunta);
+
+            // Mostrar a caixa de pergunta após um breve atraso
+            setTimeout(mostrarCaixaPergunta, 1000);
+        });
+    </script>
+</body>
+</html>
